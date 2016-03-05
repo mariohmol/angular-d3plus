@@ -5,7 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="http://www.d3plus.org/js/d3.js"></script>
     <script src="http://www.d3plus.org/js/d3plus.js"></script>
-    <script src="../src/angular-d3plus.js"></script>
+    <script src="https://rawgithub.com/mariohmol/angular-d3plus/master/src/angular-d3plus.js"></script>
 </head>
 
 <body ng-controller="ExamplesController">
@@ -14,11 +14,7 @@
     <d3plus-treemap data="sample_data" id='["name", "skill"]' size="value" ></d3plus-treemap>
     <d3plus-stacked data="sample_data" id='["name", "skill"]' size="value" ></d3plus-stacked>
 
-</body>
-
-    <script>
-
-
+  <script>
     var app = angular.module('d3plusApp', ['angular-d3plus']);
 
       app.controller('ExamplesController', function($scope) {
@@ -31,21 +27,7 @@
           {"name": "beta", "skill": "wisdom", "value": 6}
         ];
 
-        /*
-        var visualization = d3plus.viz()
-          .container("#viz")
-          .data($scope.sample_data)
-          .id(["name", "skill"])
-          .size("value")
-          .draw();
-
-          console.log(visualization);
-          */
       });
-
-
-
-
     </script>
-
+</body>
 </html>
