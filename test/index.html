@@ -5,63 +5,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="http://www.d3plus.org/js/d3.js"></script>
     <script src="http://www.d3plus.org/js/d3plus.js"></script>
-    <script src="../angular-d3plus.js"></script>
+    <script src="../src/angular-d3plus.js"></script>
 </head>
 
-<body>
+<body ng-controller="ExamplesController">
     
     <div id="viz"></div>
 
-    <d3plus-treemap></d3plus-treemap>
+    <d3plus-radar data="sample_data" id='["name", "skill"]' size="value" cointainer="#viz"></d3plus-radar>
+
+    <d3plus-treemap data="sample_data" id='["name", "skill"]' size="value" cointainer="#viz"></d3plus-treemap>
+
+</body>
 
     <script>
 
 
-    var app = angular.module('d3plusApp', ['angular-d3plus'])
-      .controller('ExamplesController', function() {
-        var todoList = this;
-        todoList.todos = [
-          {text:'learn angular', done:true},
-          {text:'build an angular app', done:false}];
-     
-        todoList.addTodo = function() {
-          todoList.todos.push({text:todoList.todoText, done:false});
-          todoList.todoText = '';
-        };
-     
-        todoList.remaining = function() {
-          var count = 0;
-          angular.forEach(todoList.todos, function(todo) {
-            count += todo.done ? 0 : 1;
-          });
-          return count;
-        };
-     
-        todoList.archive = function() {
-          var oldTodos = todoList.todos;
-          todoList.todos = [];
-          angular.forEach(oldTodos, function(todo) {
-            if (!todo.done) todoList.todos.push(todo);
-          });
-        };
+    var app = angular.module('d3plusApp', ['angular-d3plus']);
+
+      app.controller('ExamplesController', function($scope) {
+        $scope.sample_data = [
+          {"name": "alpha", "skill": "power", "value": 4},
+          {"name": "alpha", "skill": "courage", "value": 8},
+          {"name": "alpha", "skill": "wisdom", "value": 2},
+          {"name": "beta", "skill": "power", "value": 5},
+          {"name": "beta", "skill": "courage", "value": 4},
+          {"name": "beta", "skill": "wisdom", "value": 6}
+        ];
+
+        /*
+        var visualization = d3plus.viz()
+          .container("#viz")
+          .data($scope.sample_data)
+          .id(["name", "skill"])
+          .size("value")
+          .draw();
+
+          console.log(visualization);
+          */
       });
 
 
-      var sample_data = [
-        {"name": "alpha", "skill": "power", "value": 4},
-        {"name": "alpha", "skill": "courage", "value": 8},
-        {"name": "alpha", "skill": "wisdom", "value": 2},
-        {"name": "beta", "skill": "power", "value": 5},
-        {"name": "beta", "skill": "courage", "value": 4},
-        {"name": "beta", "skill": "wisdom", "value": 6}
-      ];
-      var visualization = d3plus.viz()
-        .container("#viz")
-        .data(sample_data)
-        .id(["name", "skill"])
-        .size("value")
-        .type("radar")
-        .draw();
+
+
     </script>
 
-</body></html>
+</html>
