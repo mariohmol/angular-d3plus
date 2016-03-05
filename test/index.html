@@ -5,14 +5,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="http://www.d3plus.org/js/d3.js"></script>
     <script src="http://www.d3plus.org/js/d3plus.js"></script>
-    <script src="https://rawgithub.com/mariohmol/angular-d3plus/master/src/angular-d3plus.js"></script>
+
+    <!-- dist 
+     <script src="https://rawgithub.com/mariohmol/angular-d3plus/master/src/angular-d3plus.js"></script>
+   -->
+   <!-- local -->
+    <script src="../src/angular-d3plus.js"></script>
+
 </head>
 
 <body ng-controller="ExamplesController">
     
-    <d3plus-radar data="sample_data" id='["name", "skill"]' size="value" ></d3plus-radar>
-    <d3plus-treemap data="sample_data" id='["name", "skill"]' size="value" ></d3plus-treemap>
-    <d3plus-stacked data="sample_data" id='["name", "skill"]' size="value" ></d3plus-stacked>
+ 
+
+
+  <d3plus-bar data="sample_data" id='["name", "skill"]' size="value" ></d3plus-bar>
+  <d3plus-bubbles data="sample_data" id='["name", "skill"]' size="value" ></d3plus-bubbles>
+  <d3plus-box data="sample_data" id='["name", "skill"]' size="value" ></d3plus-box>
+  <d3plus-chart data="sample_data" id='["name", "skill"]' size="value" ></d3plus-chart>
+  <d3plus-geomap data="sample_data" id='["name", "skill"]' size="value" ></d3plus-geomap>
+  <d3plus-line data="sample_data" id='["name", "skill"]' size="value" ></d3plus-line>
+  <d3plus-network data="sample_data" id='["name", "skill"]' size="value" ></d3plus-network>
+  <d3plus-paths data="sample_data" id='["name", "skill"]' size="value" ></d3plus-paths>
+  <d3plus-pie data="sample_data" id='["name", "skill"]' size="value" ></d3plus-pie>
+  <d3plus-radar data="sample_data" id='["name", "skill"]' size="value" ></d3plus-radar>
+  <d3plus-rings data="sample_data" id='["name", "skill"]' size="value" ></d3plus-rings>
+  <d3plus-sankey data="sample_data" id='["name", "skill"]' size="value" ></d3plus-sankey>
+  <d3plus-scatter data="sample_data" id='["name", "skill"]' size="value" ></d3plus-scatter>
+  <d3plus-stacked data="sample_data" id='["name", "skill"]' size="value" ></d3plus-stacked>
+  <d3plus-table data="sample_data" id='["name", "skill"]' size="value" ></d3plus-table>
+  <d3plus-treemap data="sample_data" id='["name", "skill"]' size="value" ></d3plus-treemap>
+
+
+
 
   <script>
     var app = angular.module('d3plusApp', ['angular-d3plus']);
