@@ -8,19 +8,21 @@
 	  	restrict: 'E',
 	  	scope: {
             data: '=',  
-            container: '=',    
+            container: '@',    
             id: '=',   
-            size: '=?'
+            size: '@?',
         },
         template: '<div>AEEE</div>',
-	  	link: function(scope, element, attrs){
-	  		scope.$watch('data', function(data){
+	  	link: function($scope, $element, $attrs){
+	  		$scope.$watch('data', function(data){
                 if (data) {
-                    if (scope.onReady && typeof scope.onReady() === 'function') scope.onReady()(scope, element);
+                	$scope.viz.data(data).draw();
                 }
             });
 	  	},
 	  	controller: function($scope, $element) {
+	  		if(!$scope.viz)$scope.viz=d3plus.viz().container($scope.container);
+	  		$scope.viz.id($scope.id).size($scope.size).type('radar');
 	  	}
 	  };
 	}])

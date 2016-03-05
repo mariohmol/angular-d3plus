@@ -22,9 +22,8 @@
   "globals": {
     "$": false,
     "angular": false,
-    "app": true,
-    "PUBLICO": false,
-    "netexamesServices": true,
+    "d3": false,
+    "d3plus": false,
     "moment": false
   }
 }
