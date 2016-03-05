@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 
   // Configurable paths for the application
   var appConfig = {
-    app: require('./bower.json').appPath || '',
+    app: require('./bower.json').appPath || 'src',
     dist: 'dist'
   };
 
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
         files: ['bower.json']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/src/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -57,7 +57,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/src/{,*/}*.js'
         ]
       },
       test: {
@@ -80,58 +80,25 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      after: {
+        files: [{
+          src: ['<%= yeoman.dist %>/angular-d3plus.js']
+        }]
+      },
       server: '.tmp',
       lbclient: 'lbclient/browser.bundle.js',
       config: '<%= yeoman.app %>/config/bundle.js'
-    },
-
-
-    // Reads HTML for usemin blocks to enable smart builds that automatically
-    // concat, minify and revision files. Creates configurations in memory so
-    // additional tasks can operate on them
-    useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
-      options: {
-        dest: '<%= yeoman.dist %>',
-        flow: {
-          html: {
-            steps: {
-              js: ['concat', 'uglifyjs'],
-              css: ['cssmin']
-            },
-            post: {}
-          }
-        }
-      }
-    },
-
-    // Performs rewrites based on filerev and the useminPrepare configuration
-    usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      options: {
-        assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
-      }
     },
 
     // The following *-min tasks will produce minified files in the dist folder
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
-    cssmin: {
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/styles/main.css': [
-            '<%= yeoman.dist %>/styles/{,*/}*.css',
-          ]
-        }
-      }
-    },
     uglify: {
       dist: {
         files: {
-          '<%= yeoman.dist %>/scripts/scripts.js': [
-            '<%= yeoman.dist %>/scripts/scripts.js'
+          '<%= yeoman.dist %>/angular-d3plus.min.js': [
+            '<%= yeoman.dist %>/angular-d3plus.js'
           ]
         }
       }
@@ -139,17 +106,14 @@ module.exports = function (grunt) {
     concat: {
       dist: {
         src : [
-          '<%= yeoman.app %>/scripts/common/init.js',
-          '<%= yeoman.app %>/scripts/common/*.js',
-          '<%= yeoman.app %>/scripts/common/{,*/}*.js',
-          '<%= yeoman.app %>/scripts/appnetexames.js'
+          '<%= yeoman.app %>/*.js',
         ],
-        dest : '<%= yeoman.dist %>/scripts/scripts.js',
+        dest : '<%= yeoman.dist %>/angular-d3plus.js',
         options : {
           separator : '\n\n'
         }
       },
-    {,}
+    },
     
 
     // ngAnnotate tries to make the code safe for minification automatically by
@@ -159,9 +123,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.dist %>/scripts',
+          cwd: '<%= yeoman.dist %>',
           src: 'scripts.js',
-          dest: '<%= yeoman.dist %>/scripts'
+          dest: '<%= yeoman.dist %>'
         }]
       }
     },
@@ -179,18 +143,6 @@ module.exports = function (grunt) {
             '*.js'
           ]
         }]
-      },
-      styles: {
-        expand: true,
-        cwd: '<%= yeoman.app %>/styles',
-        dest: '<%= yeoman.dist %>/styles/',
-        src: '{,*/}*.css'
-      },
-      others: {
-        expand: true,
-        cwd: '<%= yeoman.app %>/scripts/',
-        dest: '<%= yeoman.dist %>/scripts/',
-        src: '{,*/}*.map'
       }
     }
 
@@ -199,22 +151,10 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'clean:dist',
-    'build-lbclient',
-    'build-config',
-    'wiredep',
-    'useminPrepare',
-    'concurrent:dist',
-    'autoprefixer',
     'concat:dist',
-    'concat:vendor',
-    'concat:vendorcss',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
-    'cssmin:dist',
     'uglify:dist',
-    'filerev',
-    'usemin',
-    'htmlmin'
+    'clean:after'
   ]);
 };
