@@ -2,14 +2,18 @@
 <html ng-app="d3plusApp">
 <head>
     <meta charset="utf-8">
+    
+
+    <!-- dist 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="http://www.d3plus.org/js/d3.js"></script>
     <script src="http://www.d3plus.org/js/d3plus.js"></script>
-
-    <!-- dist 
      <script src="https://rawgithub.com/mariohmol/angular-d3plus/master/src/angular-d3plus.js"></script>
    -->
    <!-- local -->
+   <script src="../dist/d3.js"></script>
+   <script src="../dist/d3plus.js"></script>
+   <script src="../dist/angular.min.js"></script>
     <script src="../src/angular-d3plus.js"></script>
 
 </head>
@@ -17,32 +21,70 @@
 <body ng-controller="ExamplesController">
     
  
+ <select ng-model="charttype">
+  <option value="bar">bar</option>
+  <option value="bubbles">bubbles</option>
+  <option value="box">box</option>
+  <option value="chart">chart</option>
+  <option value="geomap">geomap</option>
+  <option value="line">line</option>
+  <option value="network">network</option>
+  <option value="paths">paths</option>
+  <option value="pie">pie</option>
+  <option value="radar">radar</option>
+  <option value="rings">rings</option>
+  <option value="sankey">sankey</option>
+  <option value="scatter">scatter</option>
+  <option value="stacked">stacked</option>
+  <option value="table">table</option>
+  <option value="treemap">treemap</option>
+ </select>
 
 
-  <d3plus-bar data="sample_data" id='["name", "skill"]' size="value" ></d3plus-bar>
-  <d3plus-bubbles data="sample_data" id='["name", "skill"]' size="value" ></d3plus-bubbles>
-  <d3plus-box data="sample_data" id='["name", "skill"]' size="value" ></d3plus-box>
-  <d3plus-chart data="sample_data" id='["name", "skill"]' size="value" ></d3plus-chart>
-  <d3plus-geomap data="sample_data" id='["name", "skill"]' size="value" ></d3plus-geomap>
-  <d3plus-line data="sample_data" id='["name", "skill"]' size="value" ></d3plus-line>
-  <d3plus-network data="sample_data" id='["name", "skill"]' size="value" ></d3plus-network>
-  <d3plus-paths data="sample_data" id='["name", "skill"]' size="value" ></d3plus-paths>
-  <d3plus-pie data="sample_data" id='["name", "skill"]' size="value" ></d3plus-pie>
-  <d3plus-radar data="sample_data" id='["name", "skill"]' size="value" ></d3plus-radar>
-  <d3plus-rings data="sample_data" id='["name", "skill"]' size="value" ></d3plus-rings>
-  <d3plus-sankey data="sample_data" id='["name", "skill"]' size="value" ></d3plus-sankey>
-  <d3plus-scatter data="sample_data" id='["name", "skill"]' size="value" ></d3plus-scatter>
-  <d3plus-stacked data="sample_data" id='["name", "skill"]' size="value" ></d3plus-stacked>
-  <d3plus-table data="sample_data" id='["name", "skill"]' size="value" ></d3plus-table>
-  <d3plus-treemap data="sample_data" id='["name", "skill"]' size="value" ></d3plus-treemap>
+  <d3plus-bar data="sample_data" id='["name", "skill"]' size="value" ng-show="charttype=='bar'" ></d3plus-bar>
+  
+  <d3plus-bubbles data="sample_data" id='["name", "skill"]' size="value" ng-show="charttype=='bubbles'" ></d3plus-bubbles>
+  
+  <d3plus-box data="sample_data" id='["name", "skill"]' size="value" ng-show="charttype=='box'" ></d3plus-box>
+  
+  <d3plus-chart data="sample_data" id='["name", "skill"]' size="value" ng-show="charttype=='chart'"></d3plus-chart>
+  
+  <d3plus-geomap data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='geomap'" ></d3plus-geomap>
+  
+  <d3plus-line data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='line'"></d3plus-line>
+  
+  <d3plus-network data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='network'"></d3plus-network>
+  
+  <d3plus-paths data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='paths'"></d3plus-paths>
+  
+  <d3plus-pie data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='pie'"></d3plus-pie>
+  
+  <d3plus-radar data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='radar'"></d3plus-radar>
+  
+  <d3plus-rings data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='rings'"></d3plus-rings>
+  
+  <d3plus-sankey data="sample_data" id='id' nodes="sankey_nodes"  edges="sankey_edges" 
+  ng-show="charttype=='sankey'" focus="{'tooltip': false,'value': 'gamma'}"></d3plus-sankey>
 
+
+  <d3plus-scatter data="scatter_data" id='type' size="value"  x="value" y="weight" ng-show="charttype=='scatter'"></d3plus-scatter>
+  
+  <d3plus-stacked data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='stacked'"></d3plus-stacked>
+  
+  <d3plus-table data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='table'"></d3plus-table>
+  
+  <d3plus-treemap data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='treemap'"></d3plus-treemap>
 
 
 
   <script>
     var app = angular.module('d3plusApp', ['angular-d3plus']);
 
+      
+
       app.controller('ExamplesController', function($scope) {
+        $scope.charttype="bar";
+
         $scope.sample_data = [
           {"name": "alpha", "skill": "power", "value": 4},
           {"name": "alpha", "skill": "courage", "value": 8},
@@ -50,6 +92,30 @@
           {"name": "beta", "skill": "power", "value": 5},
           {"name": "beta", "skill": "courage", "value": 4},
           {"name": "beta", "skill": "wisdom", "value": 6}
+        ];
+
+        $scope.sankey_nodes = [
+          {"id": "alpha"},
+          {"id": "beta"},
+          {"id": "gamma"}
+        ];
+
+
+        $scope.sankey_edgesvalue = [
+          {"strength": 2, "source": 0, "target": 2},
+          {"strength": 1, "source": 1, "target": 2},
+          {"strength": 1, "source": 2, "target": 0},
+          {"strength": 3, "source": 2, "target": 1}
+        ];
+
+        $scope.sankey_edges = {'strength': 'strength', 'value': $scope.sankey_edgesvalue};
+
+
+        $scope.scatter_data = [
+          {"value": 100, "weight": .45, "type": "alpha"},
+          {"value": 70, "weight": .60, "type": "beta"},
+          {"value": 40, "weight": -.2, "type": "gamma"},
+          {"value": 15, "weight": .1, "type": "delta"}
         ];
 
       });

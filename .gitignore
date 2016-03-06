@@ -1,1 +1,3 @@
 /node_modules/
+/dist/d3*.js
+/dist/angular.min.js

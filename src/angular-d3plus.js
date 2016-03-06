@@ -6,12 +6,12 @@
 	.directive('d3plusBar',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'bar');}
@@ -20,12 +20,12 @@
 	.directive('d3plusBubbles',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'bubbles');}
@@ -34,12 +34,12 @@
 	.directive('d3plusBox',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'box');}
@@ -48,12 +48,12 @@
 	.directive('d3plusChart',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'chart');}
@@ -62,12 +62,12 @@
 	.directive('d3plusGeomap',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'geo_map');}
@@ -76,12 +76,12 @@
 	.directive('d3plusLine',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'line');}
@@ -90,12 +90,12 @@
 	.directive('d3plusNetwork',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'network');}
@@ -104,12 +104,12 @@
 	.directive('d3plusPaths',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'paths');}
@@ -118,12 +118,12 @@
 	.directive('d3plusPie',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'pie');}
@@ -133,12 +133,12 @@
 		
 	  return {
 	  	restrict: 'E',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=',  
             container: '@?',    
             id: '=',   
             size: '@?',
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'radar');}
@@ -147,12 +147,12 @@
 	.directive('d3plusRings',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'rings');}
@@ -161,12 +161,15 @@
 	.directive('d3plusSankey',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
+            id: '@',
+            edges: '=',
+            nodes: '=',
+            focus: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'sankey');}
@@ -175,12 +178,14 @@
 	.directive('d3plusScatter',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
+            id: '@',  
+            y: '@',
+            x: '@',
             container: '@?',    
-            size: '@?'
-        },
+            type: '@?'
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'scatter');}
@@ -189,12 +194,12 @@
 	.directive('d3plusStacked',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'stacked');}
@@ -203,12 +208,11 @@
 	.directive('d3plusTable',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
-            data: '=', 
+	  	scope: angularD3plusUtils.scope({
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'table');}
@@ -217,20 +221,17 @@
 	.directive('d3plusTreemap',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
-	  	scope: {
+	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '=',  
             container: '@?',    
             size: '@?'
-        },
+        }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'treemap');}
 	  };
 	}])
-
-	
-
 	.factory('angularD3plusUtils', function(){
 		var services= {
 			myid: function($scope,$element){
@@ -244,7 +245,7 @@
 	  		template: function($scope){
 	  			var divid;
 	  			if(!$scope.container){
-	  				divid='d3plus-'+new Date().getTime();
+	  				divid='d3plus-'+new Date().getTime()+Math.floor((Math.random() * 10) + 1);
 	  				$scope.container='#'+divid;
 	  				if($scope.length>0)$scope[0].container=$scope.container;
 	  			}
@@ -259,9 +260,19 @@
 		  	},
 		  	controller: function($scope, $element,type) {
 		  		$scope.viz=d3plus.viz().container(services.myid($scope,$element));
+		  		if($scope.edges) $scope.viz.edges($scope.edges);
+		  		if($scope.focus) $scope.viz.focus($scope.focus);
 		  		if($scope.id) $scope.viz.id($scope.id);
+		  		if($scope.nodes) $scope.viz.nodes($scope.nodes);
 		  		if($scope.size) $scope.viz.size($scope.size);
+		  		if($scope.x) $scope.viz.x($scope.x);
+		  		if($scope.y) $scope.viz.y($scope.y);
 		  		$scope.viz.type(type);
+		  	},
+		  	scope: function(typescope){
+		  		typescope.data= '=';
+		  		typescope.container='@?';
+		  		return typescope;
 		  	}
 		};
 		return services;
