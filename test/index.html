@@ -25,7 +25,6 @@
   <option value="bar">bar</option>
   <option value="bubbles">bubbles</option>
   <option value="box">box</option>
-  <option value="chart">chart</option>
   <option value="geomap">geomap</option>
   <option value="line">line</option>
   <option value="network">network</option>
@@ -50,13 +49,11 @@
   <d3plus-bubbles data="bubbles_data" id='["group", "name"]' size="value" color="group" ng-show="charttype=='bubbles'" depth="1" ></d3plus-bubbles>
   
 
-  <d3plus-box data="sample_data" id='["name", "skill"]' size="value" ng-show="charttype=='box'" ></d3plus-box>
-  
-  <d3plus-chart data="sample_data" id='["name", "skill"]' size="value" ng-show="charttype=='chart'"></d3plus-chart>
-  
+  <d3plus-box data="barstacked_data" id='name' y="value" x="year" ng-show="charttype=='box'" ></d3plus-box>
+   
   <d3plus-geomap data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='geomap'" ></d3plus-geomap>
   
-  <d3plus-line data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='line'"></d3plus-line>
+  <d3plus-line data="barstacked_data" id='name' x="year" y="value"  ng-show="charttype=='line'"></d3plus-line>
   
   <d3plus-network data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='network'"></d3plus-network>
   
@@ -74,11 +71,11 @@
 
   <d3plus-scatter data="scatter_data" id='type' size="value"  x="value" y="weight" ng-show="charttype=='scatter'"></d3plus-scatter>
   
-  <d3plus-stacked data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='stacked'"></d3plus-stacked>
+  <d3plus-stacked data="barstacked_data" id='name' x="value" y="year"  ng-show="charttype=='stacked'"></d3plus-stacked>
   
-  <d3plus-table data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='table'"></d3plus-table>
+  <d3plus-table data="sample_data" cols="['name','year']"  ng-show="charttype=='table'"></d3plus-table>
   
-  <d3plus-treemap data="sample_data" id='["name", "skill"]' size="value"  ng-show="charttype=='treemap'"></d3plus-treemap>
+  <d3plus-treemap data="sample_data" id='name' size="value"  ng-show="charttype=='treemap'"></d3plus-treemap>
 
 
 

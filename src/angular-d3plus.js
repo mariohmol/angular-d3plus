@@ -39,7 +39,8 @@
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '@',  
-            container: '@?',    
+            x: '@',  
+            y: '@',    
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -47,24 +48,13 @@
 	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'box');}
 	  };
 	}])
-	.directive('d3plusChart',['angularD3plusUtils',function(angularD3plusUtils) {
-	  return {
-	  	restrict: 'AE',
-	  	scope: angularD3plusUtils.scope({
-            data: '=', 
-            id: '@',     
-            size: '@?'
-        }),
-        template:  angularD3plusUtils.template,
-	  	link: angularD3plusUtils.link,
-	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'chart');}
-	  };
-	}])
 	.directive('d3plusGeomap',['angularD3plusUtils',function(angularD3plusUtils) {
 	  return {
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
+            nodes: '=',   
+            edges: '=',   
             id: '@',     
             size: '@?'
         }),
@@ -78,7 +68,9 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '@',  
+            id: '@',
+            x: '@',  
+            y: '@',    
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -188,6 +180,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
+            y: '@',
             id: '@',     
             size: '@?'
         }),
@@ -200,8 +193,8 @@
 	  return {
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
-            id: '@',    
-            size: '@?'
+            id: '@', 
+            cols: '@'
         }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
@@ -218,7 +211,7 @@
         }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
-	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'treemap');}
+	  	controller: function($scope, $element){angularD3plusUtils.controller($scope, $element,'tree_map');}
 	  };
 	}])
 	.factory('angularD3plusUtils', function(){
@@ -248,6 +241,8 @@
 		  	},
 		  	controller: function($scope, $element,type) {
 		  		$scope.viz=d3plus.viz().container(services.myid($scope,$element));
+		  		if($scope.color) services.setvar($scope.viz.color,$scope.color);
+		  		if($scope.cols) services.setvar($scope.viz.cols,$scope.cols);
 		  		if($scope.depth) $scope.viz.depth(Math.round($scope.depth));
 		  		if($scope.edges) services.setvar($scope.viz.edges,$scope.edges);
 		  		if($scope.focus) services.setvar($scope.viz.focus,$scope.focus);
@@ -255,7 +250,6 @@
 		  		if($scope.nodes) services.setvar($scope.viz.nodes,$scope.nodes);
 		  		if($scope.size) services.setvar($scope.viz.size,$scope.size);
 		  		if($scope.time) services.setvar($scope.viz.time,$scope.time);
-		  		if($scope.color) services.setvar($scope.viz.color,$scope.color);
 		  		if($scope.x) services.setvar($scope.viz.x,$scope.x);
 		  		if($scope.y) services.setvar($scope.viz.y,$scope.y);
 		  		$scope.viz.type(type);
@@ -271,7 +265,6 @@
 			  		if(parsed) func(parsed);
 			  		else func(val);
 		  		}catch(e){
-		  			console.log(val);
 		  			func(val);
 		  		}
 		  		
