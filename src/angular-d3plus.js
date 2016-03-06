@@ -194,7 +194,8 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             id: '@', 
-            cols: '@'
+            cols: '@',
+            shape: '@'
         }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
@@ -248,6 +249,7 @@
 		  		if($scope.focus) services.setvar($scope.viz.focus,$scope.focus);
 		  		if($scope.id) services.setvar($scope.viz.id,$scope.id);
 		  		if($scope.nodes) services.setvar($scope.viz.nodes,$scope.nodes);
+		  		if($scope.shape) services.setvar($scope.viz.shape,$scope.shape);
 		  		if($scope.size) services.setvar($scope.viz.size,$scope.size);
 		  		if($scope.time) services.setvar($scope.viz.time,$scope.time);
 		  		if($scope.x) services.setvar($scope.viz.x,$scope.x);

@@ -40,7 +40,7 @@
  </select>
 
 
-  <d3plus-bar data="sample_data" id='name' x="name" y="value" size="value" ng-show="charttype=='bar'" ></d3plus-bar>
+  <d3plus-bar data="sample_data" id='name' x="year" y="value" size="value" ng-show="charttype=='bar'" ></d3plus-bar>
 
 
   <d3plus-bar data="barstacked_data" id='["group", "name"]' depth="1" size="value" x="name" y="year"
@@ -73,8 +73,8 @@
   
   <d3plus-stacked data="barstacked_data" id='name' x="value" y="year"  ng-show="charttype=='stacked'"></d3plus-stacked>
   
-  <d3plus-table data="sample_data" cols="['name','year']"  ng-show="charttype=='table'"></d3plus-table>
-  
+  <d3plus-table data="table_data" cols="[foo', 'bar', 'baz']" shape="check" id="index" ng-show="charttype=='table'"></d3plus-table>
+
   <d3plus-treemap data="sample_data" id='name' size="value"  ng-show="charttype=='treemap'"></d3plus-treemap>
 
 
@@ -177,6 +177,13 @@
           {"year": 1994, "name":"beta", "value": -60},
           {"year": 1994, "name":"gamma", "value": 25},
           {"year": 1994, "name":"delta", "value": -32}
+        ];
+
+        $scope.table_data = [
+          {"index":"a", "foo":20, "bar":5, "baz":77},
+          {"index":"b", "foo":2, "bar":20},
+          {"index":"c", "foo":94, "bar":55, "baz":101},
+          {"index":"d", "bar":95, "baz":82}
         ];
 
       });
