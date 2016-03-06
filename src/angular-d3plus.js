@@ -261,7 +261,7 @@
 		  	}, 
 		  	setvar: function(func,val){
 		  		try{
-		  			parsed=JSON.parse(val);
+		  			var parsed=JSON.parse(val);
 			  		if(parsed) func(parsed);
 			  		else func(val);
 		  		}catch(e){
