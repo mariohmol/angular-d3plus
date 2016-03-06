@@ -8,8 +8,10 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',  
+            x: '@',  
+            y: '@',  
+            time: '@?',     
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -22,8 +24,8 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',  
+            depth: '@',   
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -36,7 +38,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
+            id: '@',  
             container: '@?',    
             size: '@?'
         }),
@@ -50,8 +52,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',     
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -64,8 +65,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',     
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -78,8 +78,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',  
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -92,8 +91,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',    
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -106,8 +104,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',    
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -120,8 +117,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',    
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -134,9 +130,8 @@
 	  return {
 	  	restrict: 'E',
 	  	scope: angularD3plusUtils.scope({
-            data: '=',  
-            container: '@?',    
-            id: '=',   
+            data: '=',    
+            id: '@',   
             size: '@?',
         }),
         template:  angularD3plusUtils.template,
@@ -149,8 +144,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            edges: '=',    
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -166,8 +160,7 @@
             id: '@',
             edges: '=',
             nodes: '=',
-            focus: '=',  
-            container: '@?',    
+            focus: '@',     
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -182,8 +175,7 @@
             data: '=', 
             id: '@',  
             y: '@',
-            x: '@',
-            container: '@?',    
+            x: '@',  
             type: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -196,8 +188,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',     
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -209,8 +200,7 @@
 	  return {
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
-            id: '=',  
-            container: '@?',    
+            id: '@',    
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -223,8 +213,7 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            id: '=',  
-            container: '@?',    
+            id: '@',    
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -239,7 +228,6 @@
 				if($scope.container) name = $scope.container;
 				else if($element) name = $element.container;
 				else if($scope.viz) name = $scope.viz.container();
-				console.log(name);
 				return name;
 	  		},
 	  		template: function($scope){
@@ -260,19 +248,33 @@
 		  	},
 		  	controller: function($scope, $element,type) {
 		  		$scope.viz=d3plus.viz().container(services.myid($scope,$element));
-		  		if($scope.edges) $scope.viz.edges($scope.edges);
-		  		if($scope.focus) $scope.viz.focus($scope.focus);
-		  		if($scope.id) $scope.viz.id($scope.id);
-		  		if($scope.nodes) $scope.viz.nodes($scope.nodes);
-		  		if($scope.size) $scope.viz.size($scope.size);
-		  		if($scope.x) $scope.viz.x($scope.x);
-		  		if($scope.y) $scope.viz.y($scope.y);
+		  		if($scope.depth) $scope.viz.depth(Math.round($scope.depth));
+		  		if($scope.edges) services.setvar($scope.viz.edges,$scope.edges);
+		  		if($scope.focus) services.setvar($scope.viz.focus,$scope.focus);
+		  		if($scope.id) services.setvar($scope.viz.id,$scope.id);
+		  		if($scope.nodes) services.setvar($scope.viz.nodes,$scope.nodes);
+		  		if($scope.size) services.setvar($scope.viz.size,$scope.size);
+		  		if($scope.time) services.setvar($scope.viz.time,$scope.time);
+		  		if($scope.color) services.setvar($scope.viz.color,$scope.color);
+		  		if($scope.x) services.setvar($scope.viz.x,$scope.x);
+		  		if($scope.y) services.setvar($scope.viz.y,$scope.y);
 		  		$scope.viz.type(type);
 		  	},
 		  	scope: function(typescope){
 		  		typescope.data= '=';
 		  		typescope.container='@?';
 		  		return typescope;
+		  	}, 
+		  	setvar: function(func,val){
+		  		try{
+		  			parsed=JSON.parse(val);
+			  		if(parsed) func(parsed);
+			  		else func(val);
+		  		}catch(e){
+		  			console.log(val);
+		  			func(val);
+		  		}
+		  		
 		  	}
 		};
 		return services;
