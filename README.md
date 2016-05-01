@@ -10,25 +10,21 @@ Live example:
 
 To run a example local, run this command and open http://localhost:8000/test/ in your browse:
 
-`
+```
 python -m SimpleHTTPServer 8000
-`
+```
 
 ## How to use it
 
-Install  
+Install and include in your app:
 
-* bower install angular-d3plu
-
-Include in your app
-
-`
+```
   var app = angular.module('d3plusApp', ['angular-d3plus']);
-`
+```
 
 Put some data in scope:
 
-`
+```
   app.controller('ExamplesController', function($scope) {
         $scope.base_data = [
           {"year": 1991, "name":"alpha", "value": 15, "group": "black"},
@@ -37,12 +33,11 @@ Put some data in scope:
           {"year": 1991, "name":"delta", "value": -50, "group": "black"},
         ];
   });
- ` 
+```
 
 Use in yuor templates:
 
-`
-
+```html
 <d3plus-bar data="base_data" id='name' x="year" y="value" size="value" ></d3plus-bar>
 <d3plus-bubbles data="bubbles_data" id='["group", "name"]' size="value" color="group"  depth="1" ></d3plus-bubbles>
 <d3plus-box data="base_data" id='name' y="value" x="year"  ></d3plus-box>
@@ -55,9 +50,7 @@ Use in yuor templates:
 <d3plus-scatter data="scatter_data" id='type' size="value"  x="value" y="weight" ></d3plus-scatter>
 <d3plus-stacked data="base_data" id='name' text='name' x="year" y="value" ></d3plus-stacked>
 <d3plus-treemap data="sample_data" id='name' size="value" ></d3plus-treemap>
-
-
-`
+```
 
 
 
@@ -68,35 +61,33 @@ Use in yuor templates:
 
 * Sankey not working: Best solution:
 
-`
-  <option value="sankey">sankey</option>  
+```
  <d3plus-sankey edges="sankey_edges" nodes="sankey_nodes" size="100"    id='id' 
   ng-show="charttype=='sankey'" focus="{'tooltip': false,'value': 'gamma'}"></d3plus-sankey>
-`
+```
 
 * Group Bap: missing example
 
-`
-  <option value="groupedbar">groupedbar</option>
+```
 <d3plus-bar data="barstacked_data" id='["group", "name"]' depth="1" size="value" x="name" y="year"
   time="year" ng-show="charttype=='groupedbar'" ></d3plus-bar>
-` 
+```
 
 * Geo map - need this file on web withou CORS: http://bl.ocks.org/davelandry/raw/9042807/countries.json
 
-	`
+```	`
     <d3plus-geomap data="geo_data" id="country" color="value"  tooltip="value" text="name" 
   coords='{
       "solo": ["euesp","euita","eufra","euprt"],
       "value": "http://bl.ocks.org/davelandry/raw/9042807/countries.json"
     }'
   ng-show="charttype=='geomap'" ></d3plus-geomap>
-  `
+```
 
  * Tabe data example
 
- `
+```
   <d3plus-table data="table_data" cols="[foo', 'bar', 'baz']" shape="check" id="index" ng-show="charttype=='table'"></d3plus-table>
-`
+```
 
 
