@@ -53,9 +53,9 @@
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
-            nodes: '=',   
-            edges: '=',   
-            id: '@',     
+            coords: '=',  
+            id: '@',  
+            text: '@?',
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -70,7 +70,8 @@
             data: '=', 
             id: '@',
             x: '@',  
-            y: '@',    
+            y: '@',  
+            text: '@?',  
             size: '@?'
         }),
         template:  angularD3plusUtils.template,
@@ -84,7 +85,9 @@
 	  	scope: angularD3plusUtils.scope({
             data: '=', 
             id: '@',    
-            size: '@?'
+            size: '@?',
+            nodes: '=',
+            edges: '='
         }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
@@ -148,7 +151,6 @@
 	  return {
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
-            data: '=', 
             id: '@',
             edges: '=',
             nodes: '=',
@@ -179,10 +181,11 @@
 	  return {
 	  	restrict: 'AE',
 	  	scope: angularD3plusUtils.scope({
-            data: '=', 
+            data: '=',
+            text: '@', 
             y: '@',
             id: '@',     
-            size: '@?'
+            x: '@?'
         }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
@@ -231,7 +234,10 @@
 	  				$scope.container='#'+divid;
 	  				if($scope.length>0)$scope[0].container=$scope.container;
 	  			}
-	        	return '<div id="'+divid+'"></div>';
+	  			var style=""
+	  			if($scope[0].attributes['style'])
+	  				style=$scope[0].attributes['style'].nodeValue
+	        	return '<div id="'+divid+'" style="'+style+'"></div>';
 	        },
 		  	link: function($scope, $element, $attrs){
 		  		$scope.$watch('data', function(data){
@@ -245,20 +251,29 @@
 		  		if($scope.color) services.setvar($scope.viz.color,$scope.color);
 		  		if($scope.cols) services.setvar($scope.viz.cols,$scope.cols);
 		  		if($scope.depth) $scope.viz.depth(Math.round($scope.depth));
-		  		if($scope.edges) services.setvar($scope.viz.edges,$scope.edges);
+
+		  		if($scope.nodes) services.setvar($scope.viz.nodes,$scope.nodes);
+		  		if($scope.edges){
+		  			 services.setvar($scope.viz.edges,$scope.edges);
+		  		} 
 		  		if($scope.focus) services.setvar($scope.viz.focus,$scope.focus);
 		  		if($scope.id) services.setvar($scope.viz.id,$scope.id);
-		  		if($scope.nodes) services.setvar($scope.viz.nodes,$scope.nodes);
+		  		
 		  		if($scope.shape) services.setvar($scope.viz.shape,$scope.shape);
 		  		if($scope.size) services.setvar($scope.viz.size,$scope.size);
 		  		if($scope.time) services.setvar($scope.viz.time,$scope.time);
 		  		if($scope.x) services.setvar($scope.viz.x,$scope.x);
 		  		if($scope.y) services.setvar($scope.viz.y,$scope.y);
+		  		if($scope.coords) services.setvar($scope.viz.coords,$scope.coords);
+		  		if($scope.tooltip) services.setvar($scope.viz.tooltip,$scope.tooltip);
 		  		$scope.viz.type(type);
 		  	},
 		  	scope: function(typescope){
 		  		typescope.data= '=';
 		  		typescope.container='@?';
+		  		typescope.style='@?';
+		  		typescope.focus='@?';
+            	typescope.tooltip='@?';
 		  		return typescope;
 		  	}, 
 		  	setvar: function(func,val){
