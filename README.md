@@ -8,11 +8,7 @@ Live example:
 
 * http://codepen.io/mariomol/pen/vGNQaV
 
-To run a example local, run this command and open http://localhost:8000/test/ in your browse:
 
-```
-python -m SimpleHTTPServer 8000
-```
 
 ## How to use it
 
@@ -35,7 +31,7 @@ Put some data in scope:
   });
 ```
 
-Use in yuor templates:
+Use in your templates:
 
 ```html
 <d3plus-bar data="base_data" id='name' x="year" y="value" size="value" ></d3plus-bar>
@@ -52,8 +48,12 @@ Use in yuor templates:
 <d3plus-treemap data="sample_data" id='name' size="value" ></d3plus-treemap>
 ```
 
+If you would like to colaborate, you can make dev in angular-d3plus.js and use test/index.html to test it. 
+You will need to run like this command and open http://localhost:8000/test/ in your browse:
 
-
+```
+python -m SimpleHTTPServer 8000
+```
 
 ## TODO
 
