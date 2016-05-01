@@ -63,10 +63,10 @@ python -m SimpleHTTPServer 8000
 
 ```
  <d3plus-sankey edges="sankey_edges" nodes="sankey_nodes" size="100"    id='id' 
-  ng-show="charttype=='sankey'" focus="{'tooltip': false,'value': 'gamma'}"></d3plus-sankey>
+   focus="{'tooltip': false,'value': 'gamma'}" ng-show="charttype=='sankey'" ></d3plus-sankey>
 ```
 
-* Group Bap: missing example
+* Group Stacked Bar: missing a example
 
 ```
 <d3plus-bar data="barstacked_data" id='["group", "name"]' depth="1" size="value" x="name" y="year"
