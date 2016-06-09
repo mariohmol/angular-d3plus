@@ -242,13 +242,13 @@
 	        },
 		  	link: function($scope, $element, $attrs){
 		  		$scope.$watch('data', function(data){
-	                if (data) {
+	                if (data && data.length>0) {
 	                	$scope.viz.data(data).draw();
 	                }
 	            });
 	            $scope.$on("DataReady", function  (event,args){
 					if (args.elementid == $scope.elementid) {
-						$scope.viz.data(args.data).draw();
+						if(args.data && args.data.length>0) $scope.viz.data(args.data).draw();
 					}
 				});
 
