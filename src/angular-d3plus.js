@@ -280,7 +280,7 @@
 		  		typescope.style='@?';
 		  		typescope.focus='@?';
             	typescope.tooltip='@?';
-            	typescope.elementid: '@?';
+            	typescope.elementid='@?';
 		  		return typescope;
 		  	}, 
 		  	setvar: function(func,val){
