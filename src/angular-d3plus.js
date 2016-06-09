@@ -12,7 +12,8 @@
             x: '@',  
             y: '@',  
             time: '@?',     
-            size: '@?'
+            size: '@?',
+            elementid: '@?'
         }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
@@ -223,7 +224,7 @@
 			myid: function($scope,$element){
 				var name;
 				if($scope.container) name = $scope.container;
-				else if($element) name = $element.container;
+				else if($element) name = "#"+$element[0].children[0].id;
 				else if($scope.viz) name = $scope.viz.container();
 				return name;
 	  		},
@@ -245,6 +246,12 @@
 	                	$scope.viz.data(data).draw();
 	                }
 	            });
+	            $scope.$on("DataReady", function  (event,args){
+					if (args.elementid == $scope.elementid) {
+						$scope.viz.data(args.data).draw();
+					}
+				});
+
 		  	},
 		  	controller: function($scope, $element,type) {
 		  		$scope.viz=d3plus.viz().container(services.myid($scope,$element));
