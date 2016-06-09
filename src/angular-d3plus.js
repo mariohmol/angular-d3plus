@@ -12,8 +12,7 @@
             x: '@',  
             y: '@',  
             time: '@?',     
-            size: '@?',
-            elementid: '@?'
+            size: '@?'
         }),
         template:  angularD3plusUtils.template,
 	  	link: angularD3plusUtils.link,
@@ -281,6 +280,7 @@
 		  		typescope.style='@?';
 		  		typescope.focus='@?';
             	typescope.tooltip='@?';
+            	typescope.elementid: '@?';
 		  		return typescope;
 		  	}, 
 		  	setvar: function(func,val){
