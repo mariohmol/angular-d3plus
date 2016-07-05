@@ -277,7 +277,10 @@
                         if (args.elementid === $scope.elementid) {
                             if (args.data && args.data.length > 0) $scope.viz.data(args.data);
                             if (args.nodes && args.nodes.length > 0) $scope.viz.nodes(args.nodes);
-                            if (args.edges && args.edges.length > 0) $scope.viz.edges(args.edges);
+                            if (args.edges && args.edges.length > 0) {
+                              $scope.viz.edges(args.edges);
+                              if(args.edgesarrows) $scope.viz.edges({'arrows': args.edgesarrows});
+                            }
                             $scope.viz.draw();
                         }
                     });
