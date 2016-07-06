@@ -8,6 +8,10 @@ Live example:
 
 * http://codepen.io/mariomol/pen/vGNQaV
 
+Some opensource projects using:
+
+* https://github.com/mariohmol/rivescript-viz
+* https://github.com/mariohmol/voos-fab
 
 ## How to use it
 
@@ -63,14 +67,27 @@ First add in your view both tags, in this example a `treemap` and a `network`. R
 
 ```html
 <d3plus-treemap elementid='mytreemap' data="sample_data" size="value" ></d3plus-treemap>
-<d3plus-network elementid="mynetwork"      data="network_data" nodes="network_positions" edges="network_connections"  size="size"  ></d3plus-network>
+<d3plus-network elementid="mynetwork" size="size" id="name" data="nodes" edges="connections"></d3plus-network>
 ```
 
 
 ```javascript
 $scope.$broadcast("DataReady",{elementid: "mytreemap", data: $scope.sample_data });
-$scope.$broadcast("DataReady",{elementid: "mypie", data: $scope.network_data, nodes: $scope.network_positions, edges: $scope.network_connections });
+$scope.$broadcast("DataReady",{elementid: "mypie", data: $scope.nodes,  edges: $scope.connections });
 ```     
+
+Here a example using network with arrows and connections with labels:
+
+```js
+$scope.$broadcast("DataReady", {
+    elementid: "mynetwork",
+    edges: {
+        "label": "trigger",
+        "value": $scope.connections
+    },
+    edgesarrows: true
+});
+```
 
 # Want to Help?
 
