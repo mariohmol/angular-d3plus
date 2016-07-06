@@ -1,14 +1,13 @@
 {
   "name": "angular-d3plus",
-  "version": "1.0.4",
+  "version": "1.0.10",
   "scripts": {
     "test": "python -m SimpleHTTPServer 8000",
-    "build": "grunt",
-    "pretest": "jshint src/.",
-    "publish": "npm publish ./"
+    "build": "grunt && npm run pretest",
+    "pretest": "jshint .",
+    "publishnpm": "npm run build && npm publish ./"
   },
   "dependencies": {
-    "bower": "^1.3.8"
   },
   "devDependencies": {
     "bower": "^1.3.8",
