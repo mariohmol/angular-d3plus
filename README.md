@@ -13,6 +13,21 @@ Some opensource projects using:
 * https://github.com/mariohmol/rivescript-viz
 * https://github.com/mariohmol/voos-fab
 
+
+```
+├── Gruntfile.js
+├── LICENSE
+├── README.md
+├── bower.json
+├── dist
+│   └── angular-d3plus.min.js
+├── package.json
+├── src
+│   └── angular-d3plus.js
+└── test
+    └── index.html
+```
+
 ## How to use it
 
 Install and include in your app:
