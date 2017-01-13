@@ -5,7 +5,7 @@
     "Mario Mol <mariohmol@gmail.com>"
   ],
   "description": "Angularjs directives for d3plus",
-  "main": "dist/angular-d3plus.min.js",
+  "main": "src/angular-d3plus.js",
   "moduleType": [],
   "keywords": [
     "angularjs",
