@@ -310,6 +310,7 @@
                     typescope.focus = '@?';
                     typescope.tooltip = '@?';
                     typescope.elementid = '@?';
+                    typescope.config = '@?';
                     return typescope;
                 },
                 setvar: function(func, val) {
