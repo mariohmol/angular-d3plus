@@ -4,6 +4,12 @@ Angular directive for d3plus charts
 
 `bower install angular-d3plus`
 
+This module uses:
+
+* d3plus https://d3plus.org
+* d3 https://d3js.org/
+
+
 Live example:
 
 * http://codepen.io/mariomol/pen/vGNQaV
